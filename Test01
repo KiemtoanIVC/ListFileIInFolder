@@ -10,6 +10,6 @@ let
     #"Extracted Text Before Delimiter" = Table.TransformColumns(#"Replaced Value1", {{"Name - Copy", each Text.BeforeDelimiter(_, "."), type text}}),
     #"Renamed Columns1" = Table.RenameColumns(#"Extracted Text Before Delimiter",{{"Name - Copy", "Ma BP"}}),
     #"Reordered Columns" = Table.ReorderColumns(#"Renamed Columns1",{"Ma BP", "Ten file"}),
-    #"Renamed Columns2"= Table.RenameColumns(#"Reordered Columns",{{"Ma BP", "Ma BP thue"}}),,
+    #"Renamed Columns2"= Table.RenameColumns(#"Reordered Columns",{{"Ma BP", "Ma BP thue"}})
 in
     #"Renamed Columns2"
