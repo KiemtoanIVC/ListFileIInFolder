@@ -1,15 +1,4 @@
 let
-    Folderlink = Excel.CurrentWorkbook(){[Name="Folder_link"]}[Content][Folder]{0},
-    Source = Folder.Files(Folderlink),
-    #"Filtered Rows" = Table.SelectRows(Source, each Text.Contains([Extension], "xls")),
-    #"Removed Other Columns" = Table.SelectColumns(#"Filtered Rows",{"Name"}),
-    #"Duplicated Column" = Table.DuplicateColumn(#"Removed Other Columns", "Name", "Name - Copy"),
-    #"Renamed Columns" = Table.RenameColumns(#"Duplicated Column",{{"Name", "Ten file"}}),
-    #"Replaced Value" = Table.ReplaceValue(#"Renamed Columns","_",".",Replacer.ReplaceText,{"Name - Copy"}),
-    #"Replaced Value1" = Table.ReplaceValue(#"Replaced Value","+",".",Replacer.ReplaceText,{"Name - Copy"}),
-    #"Extracted Text Before Delimiter" = Table.TransformColumns(#"Replaced Value1", {{"Name - Copy", each Text.BeforeDelimiter(_, "."), type text}}),
-    #"Renamed Columns1" = Table.RenameColumns(#"Extracted Text Before Delimiter",{{"Name - Copy", "Ma BP"}}),
-    #"Reordered Columns" = Table.ReorderColumns(#"Renamed Columns1",{"Ma BP", "Ten file"}),
-    #"Renamed Columns2"= Table.RenameColumns(#"Reordered Columns",{{"Ma BP", "Ma BP thue"}})
+
 in
     #"Renamed Columns2"
